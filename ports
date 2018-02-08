@@ -1,0 +1,2 @@
+netstat -l -p |grep 000
+
