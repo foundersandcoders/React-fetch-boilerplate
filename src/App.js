@@ -12,12 +12,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="Check-components-load">
+        <div className="Check-components-load">
           <RandomComponent />
-        </p>
-        <p className="Check-api-connection">
+        </div>
+        <div className="Check-api-connection">
           <ApiData />
-        </p>
+        </div>
       </div>
     );
   }

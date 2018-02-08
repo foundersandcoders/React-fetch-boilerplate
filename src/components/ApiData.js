@@ -8,21 +8,28 @@ var standardHeaders = {
        }
 
 class ApiData extends Component {
+
+  constructor () {
+    super ();
+    this.state = {data: undefined};
+  }
+
   componentDidMount () {
     fetch ('/api',standardHeaders)
-      .then ( (res) => console.log (res.json()) )
-      .catch ((err) => console.log(err));
+      .then ( result => result.json())
+      .then ( json => {
+        this.setState ({data : json.data || 'NOTHING'}) ;
+        console.log ('data',json.data,'\nstate: ',this.state);
+      })
+      // .then ( result => console.log (result.json()) )
+      .catch ( err => {console.log(err)} )
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+      <div className="ApiResult">
+        <p className="ResultInnerP">
+          I fetched: {this.state.data}
         </p>
       </div>
     );
